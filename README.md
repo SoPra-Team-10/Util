@@ -14,7 +14,7 @@ to an `std::runtime_error`.
 
 ### Logging
 The logging library wraps around any `ostream` (for example `std::cout`
-or any `ofstream` and provides filtering
+or `ofstream` (output-file-stream)) and provides filtering
 depending on the log level and coloring depending on the log level.
 Furthermore it prepends every message with the current timestamp.
 

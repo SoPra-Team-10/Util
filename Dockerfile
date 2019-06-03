@@ -21,7 +21,7 @@ RUN mkdir -p /src/build
 
 WORKDIR /src/build
 
-RUN cmake -DCMAKE_BUILD_TYPE=Release .. && make -j$(nproc) SopraNetwork && make install
+RUN cmake -DCMAKE_BUILD_TYPE=Release .. && make -j$(nproc) SopraUtil && make install
 RUN cmake -DCMAKE_BUILD_TYPE=Release -DUSE_INSTALLED_LIB=true .. && make -j$(nproc) Tests
 
 CMD ["Tests/Tests", "--gtest_repeat=10", "--gtest_shuffle", "--gtest_color=yes"]

@@ -3,6 +3,20 @@
 Several utilities used in our C++ Codebase.
 
 ## Overview
+### Timer
+The timer class represents a simple single-shot timer with an interface 
+similar to the `setTimeout()` function in javascript. Additionally it
+supports pausing and resuming the timeout. There are two import things to
+keep in mind: the function runs in a different thread than the caller,
+this can lead to the usual multithreading issues. Secondly the class doesn't
+support setting a new function while the timer is running, this will lead 
+to an `std::runtime_error`.
+
+### Logging
+The logging library wraps around any `ostream` (for example `std::cout`
+or any `ofstream` and provides filtering
+depending on the log level and coloring depending on the log level.
+Furthermore it prepends every message with the current timestamp.
 
 ## Installing
 ### Installing Utilities

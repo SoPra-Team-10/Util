@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/SoPra-Team-10/Network.svg?branch=master)](https://travis-ci.org/SoPra-Team-10/Network)
+[![Build Status](https://travis-ci.org/SoPra-Team-10/Util.svg?branch=master)](https://travis-ci.org/SoPra-Team-10/Network)
 # Utilities
 Several utilities used in our C++ Codebase.
 

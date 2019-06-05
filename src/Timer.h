@@ -52,6 +52,7 @@ namespace util {
         std::future<void> threadHandler;
         std::thread functionThreadHandler;
         std::mutex mutex;
+        std::mutex timeLock;
         std::variant<Timepoint, Duration> time;
     };
 
@@ -66,9 +67,11 @@ namespace util {
         threadHandler = std::async(std::launch::async, [=](){
             std::unique_lock<std::mutex> lock{mutex};
             while (!stopRequired) {
+                timeLock.lock();
                 if (std::holds_alternative<Timepoint>(time)) { // Running
                     auto now = std::chrono::system_clock::now();
                     auto timepoint = std::get<Timepoint>(time);
+                    timeLock.unlock();
                     if (now >= timepoint) {
                         functionThreadHandler = std::thread(function);
                         functionThreadHandler.detach();
@@ -78,6 +81,7 @@ namespace util {
                         return timepoint > std::chrono::system_clock::now() || stopRequired;
                     });
                 } else { // Pause
+                    timeLock.unlock();
                     conditionVariable.wait(lock, [&](){ return static_cast<bool>(stopRequired);});
                 }
             }

@@ -9,6 +9,7 @@
 
 namespace util {
     void Timer::pause() {
+        std::lock_guard<std::mutex> lock{timeLock};
         if (std::holds_alternative<Timepoint>(time)) { // Check if we are actually running
             auto timepoint = std::get<Timepoint>(time);
             auto now = std::chrono::system_clock::now();
@@ -19,6 +20,7 @@ namespace util {
     }
 
     void Timer::resume() {
+        std::lock_guard<std::mutex> lock{timeLock};
         if (std::holds_alternative<Duration>(time)) { // Check if pause
             auto duration = std::get<Duration>(time);
             auto now = std::chrono::system_clock::now();

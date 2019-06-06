@@ -23,6 +23,11 @@ namespace util {
     class Timer {
     public:
         /**
+         * Default CTor
+         */
+        Timer() = default;
+
+        /**
          * Not copyable
          */
         Timer(const Timer &timer) = delete;

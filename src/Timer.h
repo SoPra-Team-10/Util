@@ -89,7 +89,7 @@ namespace util {
             throw std::runtime_error("Timer not finished, call stop() first");
         }
 
-        threadHandler = std::async(std::launch::async, [=](){
+        threadHandler = std::async(std::launch::async, [this, &function](){
             std::unique_lock<std::mutex> lock{mutex};
             while (!stopRequired) {
                 timeLock.lock();
@@ -102,12 +102,12 @@ namespace util {
                         functionThreadHandler.detach();
                         return;
                     }
-                    conditionVariable.wait_until(lock, timepoint, [&](){
+                    conditionVariable.wait_until(lock, timepoint, [&timepoint, this](){
                         return timepoint > std::chrono::system_clock::now() || stopRequired;
                     });
                 } else { // Pause
                     timeLock.unlock();
-                    conditionVariable.wait(lock, [&](){ return static_cast<bool>(stopRequired);});
+                    conditionVariable.wait(lock, [this](){ return static_cast<bool>(stopRequired);});
                 }
             }
         });

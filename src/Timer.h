@@ -15,8 +15,33 @@
 #include <variant>
 
 namespace util {
+    /**
+     * The timer class represents a simple single-shot timer with an interface
+     * similar to the `setTimeout()` function in javascript. Additionally it
+     * supports pausing and resuming the timeout.
+     */
     class Timer {
     public:
+        /**
+         * Not copyable
+         */
+        Timer(const Timer &timer) = delete;
+
+        /**
+         * Not cpy assignable
+         */
+        Timer& operator=(const Timer &timer) = delete;
+
+        /**
+         * Not movable
+         */
+        Timer(Timer&& timer) = delete;
+
+        /**
+         * Not move assignable
+         */
+        Timer& operator=(Timer &&timer) = delete;
+
         /**
          *
          * @param delay after the delay, the code will be execute

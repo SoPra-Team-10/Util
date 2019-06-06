@@ -18,6 +18,16 @@ or `ofstream` (output-file-stream)) and provides filtering
 depending on the log level and coloring depending on the log level.
 Furthermore it prepends every message with the current timestamp.
 
+#### Log-Levels
+The following log levels are possible:
+| Log-Level | Color | Explanation |
+| ----- | ----- | ---- |
+| 0 | - | No log messages |
+| 1 | Red | Only error messages |
+| 2 | Yellow | Error messages and warning |
+| 3 | Blue | Error messages, warning and info messages |
+| 4 | White | All messages (error, warning, info and debug) |
+
 ## Installing
 ### Installing Utilities
 In the root directory of the  project run cmake to generate a Makefile by running

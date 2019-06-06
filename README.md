@@ -20,6 +20,7 @@ Furthermore it prepends every message with the current timestamp.
 
 #### Log-Levels
 The following log levels are possible:
+
 | Log-Level | Color | Explanation |
 | ----- | ----- | ---- |
 | 0 | - | No log messages |

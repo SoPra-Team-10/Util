@@ -94,7 +94,7 @@ namespace util {
             throw std::runtime_error("Timer not finished, call stop() first");
         }
 
-        threadHandler = std::async(std::launch::async, [this, &function](){
+        threadHandler = std::async(std::launch::async, [this, function](){
             std::unique_lock<std::mutex> lock{mutex};
             while (!stopRequired) {
                 timeLock.lock();

@@ -9,6 +9,7 @@
 #define SERVER_LOGGING_HPP
 
 #include <ostream>
+#include <vector>
 
 namespace util {
 
@@ -24,6 +25,13 @@ namespace util {
          * @param loggingLevel the level of verbosity between 0 (no information) and 4 (maximum), values larger 4 are the same as 4.
          */
         Logging(std::ostream &ostream, unsigned int loggingLevel);
+
+        /**
+         * Construct a copy of the log which will always print a certain prefix in front of the message
+         * @param log the log which to use
+         * @param prefix the prefix to print
+         */
+        Logging(const Logging &log, const std::string& prefix);
 
         /**
          * Print an error message (verbosity level 1, color red)
@@ -63,6 +71,7 @@ namespace util {
 
         std::ostream &ostream;
         unsigned int loggingLevel;
+        std::vector<std::string> prefixes;
     };
 }
 

@@ -11,7 +11,12 @@
 
 namespace util {
     Logging::Logging(std::ostream &ostream, unsigned int loggingLevel) : ostream{ostream},
-        loggingLevel{loggingLevel} {}
+        loggingLevel{loggingLevel}, prefixes{} {}
+
+    Logging::Logging(const Logging &log, const std::string& prefix) : ostream{log.ostream}, loggingLevel{log.loggingLevel},
+        prefixes{log.prefixes} {
+        prefixes.emplace_back(prefix);
+    }
 
     void Logging::error(const std::string &msg) {
     this->logImpl(msg, 1, "\33[91m");
@@ -38,9 +43,16 @@ namespace util {
 
             this->ostream << "" << std::put_time(&time,"%F %T:")
                     << std::setfill('0') <<std::setw(3) << (timestamp.count() % 1000)
-                    << "\t" << colorFormat << string << "\33[0m\n";
+                    << "\t";
+
+            for (const auto &prefix : this->prefixes) {
+                this->ostream << "[" << prefix << "]\t";
+            }
+
+            this->ostream << colorFormat << string << "\33[0m\n";
         }
     }
+
 
 
 }

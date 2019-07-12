@@ -4,7 +4,7 @@
 
 using namespace util;
 
-TEST(UtilLogging, NoLogSendError) {
+TEST(Logging, NoLogSendError) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 0};
@@ -12,7 +12,7 @@ TEST(UtilLogging, NoLogSendError) {
     ASSERT_TRUE(stringstream.str().empty());
 }
 
-TEST(UtilLogging, NoLogSendWarn) {
+TEST(Logging, NoLogSendWarn) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 0};
@@ -20,7 +20,7 @@ TEST(UtilLogging, NoLogSendWarn) {
     ASSERT_TRUE(stringstream.str().empty());
 }
 
-TEST(UtilLogging, NoLogSendInfo) {
+TEST(Logging, NoLogSendInfo) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 0};
@@ -28,7 +28,7 @@ TEST(UtilLogging, NoLogSendInfo) {
     ASSERT_TRUE(stringstream.str().empty());
 }
 
-TEST(UtilLogging, NoLogSendDebug) {
+TEST(Logging, NoLogSendDebug) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 0};
@@ -39,7 +39,7 @@ TEST(UtilLogging, NoLogSendDebug) {
 
 
 
-TEST(UtilLogging, ErrorSendError) {
+TEST(Logging, ErrorSendError) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 1};
@@ -47,7 +47,7 @@ TEST(UtilLogging, ErrorSendError) {
     ASSERT_FALSE(stringstream.str().empty());
 }
 
-TEST(UtilLogging, ErrorSendWarn) {
+TEST(Logging, ErrorSendWarn) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 1};
@@ -55,7 +55,7 @@ TEST(UtilLogging, ErrorSendWarn) {
     ASSERT_TRUE(stringstream.str().empty());
 }
 
-TEST(UtilLogging, ErrorSendInfo) {
+TEST(Logging, ErrorSendInfo) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 1};
@@ -63,7 +63,7 @@ TEST(UtilLogging, ErrorSendInfo) {
     ASSERT_TRUE(stringstream.str().empty());
 }
 
-TEST(UtilLogging, ErrorSendDebug) {
+TEST(Logging, ErrorSendDebug) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 1};
@@ -73,7 +73,7 @@ TEST(UtilLogging, ErrorSendDebug) {
 
 
 
-TEST(UtilLogging, WarnSendError) {
+TEST(Logging, WarnSendError) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 2};
@@ -81,7 +81,7 @@ TEST(UtilLogging, WarnSendError) {
     ASSERT_FALSE(stringstream.str().empty());
 }
 
-TEST(UtilLogging, WarnSendWarn) {
+TEST(Logging, WarnSendWarn) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 2};
@@ -89,7 +89,7 @@ TEST(UtilLogging, WarnSendWarn) {
     ASSERT_FALSE(stringstream.str().empty());
 }
 
-TEST(UtilLogging, WarnSendInfo) {
+TEST(Logging, WarnSendInfo) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 2};
@@ -97,7 +97,7 @@ TEST(UtilLogging, WarnSendInfo) {
     ASSERT_TRUE(stringstream.str().empty());
 }
 
-TEST(UtilLogging, WarnSendDebug) {
+TEST(Logging, WarnSendDebug) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 2};
@@ -108,7 +108,7 @@ TEST(UtilLogging, WarnSendDebug) {
 
 
 
-TEST(UtilLogging, InfoSendError) {
+TEST(Logging, InfoSendError) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 3};
@@ -116,7 +116,7 @@ TEST(UtilLogging, InfoSendError) {
     ASSERT_FALSE(stringstream.str().empty());
 }
 
-TEST(UtilLogging, InfoSendWarn) {
+TEST(Logging, InfoSendWarn) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 3};
@@ -124,7 +124,7 @@ TEST(UtilLogging, InfoSendWarn) {
     ASSERT_FALSE(stringstream.str().empty());
 }
 
-TEST(UtilLogging, InfoSendInfo) {
+TEST(Logging, InfoSendInfo) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 3};
@@ -132,7 +132,7 @@ TEST(UtilLogging, InfoSendInfo) {
     ASSERT_FALSE(stringstream.str().empty());
 }
 
-TEST(UtilLogging, InfoSendDebug) {
+TEST(Logging, InfoSendDebug) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 3};
@@ -143,7 +143,7 @@ TEST(UtilLogging, InfoSendDebug) {
 
 
 
-TEST(UtilLogging, DebugSendError) {
+TEST(Logging, DebugSendError) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 4};
@@ -151,7 +151,7 @@ TEST(UtilLogging, DebugSendError) {
     ASSERT_FALSE(stringstream.str().empty());
 }
 
-TEST(UtilLogging, DebugSendWarn) {
+TEST(Logging, DebugSendWarn) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 4};
@@ -159,7 +159,7 @@ TEST(UtilLogging, DebugSendWarn) {
     ASSERT_FALSE(stringstream.str().empty());
 }
 
-TEST(UtilLogging, DebugSendInfo) {
+TEST(Logging, DebugSendInfo) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 4};
@@ -167,7 +167,7 @@ TEST(UtilLogging, DebugSendInfo) {
     ASSERT_FALSE(stringstream.str().empty());
 }
 
-TEST(UtilLogging, DebugSendDebug) {
+TEST(Logging, DebugSendDebug) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 4};
@@ -177,7 +177,7 @@ TEST(UtilLogging, DebugSendDebug) {
 
 
 
-TEST(UtilLogging, ArbitrarySendError) {
+TEST(Logging, ArbitrarySendError) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 42};
@@ -185,7 +185,7 @@ TEST(UtilLogging, ArbitrarySendError) {
     ASSERT_FALSE(stringstream.str().empty());
 }
 
-TEST(UtilLogging, ArbitrarySendWarn) {
+TEST(Logging, ArbitrarySendWarn) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 42};
@@ -193,7 +193,7 @@ TEST(UtilLogging, ArbitrarySendWarn) {
     ASSERT_FALSE(stringstream.str().empty());
 }
 
-TEST(UtilLogging, ArbitrarySendInfo) {
+TEST(Logging, ArbitrarySendInfo) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 42};
@@ -201,7 +201,7 @@ TEST(UtilLogging, ArbitrarySendInfo) {
     ASSERT_FALSE(stringstream.str().empty());
 }
 
-TEST(UtilLogging, ArbitrarySendDebug) {
+TEST(Logging, ArbitrarySendDebug) {
     std::stringstream stringstream;
 
     Logging logging{stringstream, 42};

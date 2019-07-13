@@ -49,7 +49,7 @@ namespace util {
                 this->ostream << "[" << prefix << "]\t";
             }
 
-            this->ostream << colorFormat << string << "\33[0m\n";
+            this->ostream << colorFormat << string << "\33[0m" << std::endl;
         }
     }
 

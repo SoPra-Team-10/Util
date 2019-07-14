@@ -57,6 +57,11 @@ namespace util {
          */
         void debug(const std::string &msg);
 
+        /**
+         * Prints dank memes independent of verbosity
+         * @param msg your bullshit content
+         */
+        void shitTalk(const std::string &msg);
     private:
         /**
          * Actual implementation of the logging, checks the verbosity level,

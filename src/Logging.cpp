@@ -34,6 +34,10 @@ namespace util {
         this->logImpl(msg, 4, "\33[37m");
     }
 
+    void Logging::shitTalk(const std::string &msg) {
+        this->logImpl(msg, 0, "\33[38;5;13m");
+    }
+
     void Logging::logImpl(const std::string &string, unsigned int level, const std::string &colorFormat) {
         if (level <= this->loggingLevel) {
             auto globTime = std::time(nullptr);
@@ -52,7 +56,4 @@ namespace util {
             this->ostream << colorFormat << string << "\33[0m" << std::endl;
         }
     }
-
-
-
 }

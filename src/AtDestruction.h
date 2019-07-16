@@ -70,9 +70,10 @@ namespace util {
         ~AtDestruction() {
             atDestruction();
         }
+
+        T t;
     private:
         std::function<void(void)> atDestruction;
-        T t;
     };
 }
 

@@ -24,7 +24,7 @@ namespace util {
         if (std::holds_alternative<Duration>(time)) { // Check if pause
             auto duration = std::get<Duration>(time);
             auto now = std::chrono::system_clock::now();
-            auto timepoint = now + duration;
+            Timepoint timepoint = now + duration;
             time = timepoint;
             conditionVariable.notify_all();
         }

@@ -112,7 +112,9 @@ namespace util {
                     });
                 } else { // Pause
                     timeLock.unlock();
-                    conditionVariable.wait(lock, [this](){ return static_cast<bool>(stopRequired);});
+                        conditionVariable.wait(lock, [this](){ return static_cast<bool>(stopRequired) ||
+                        std::holds_alternative<Timepoint>(time);
+                    });
                 }
             }
         });

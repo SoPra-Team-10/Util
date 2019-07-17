@@ -33,8 +33,8 @@ namespace util {
          * @param args the constructor arguments of the underlying object
          */
         template <typename F, typename ...Args>
-        AtDestruction(F &&f, Args&&... args)
-            : atDestruction{std::forward<F>(f)}, t{std::forward<Args>(args)...} {}
+        explicit AtDestruction(F &&f, Args&&... args)
+            : t{std::forward<Args>(args)...}, atDestruction{std::forward<F>(f)} {}
 
         /**
          * Default copy ctor, defined to follow the rule of five

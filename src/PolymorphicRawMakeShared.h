@@ -8,7 +8,18 @@
 #ifndef SOPRAUTIL_POLYMORPHICRAWMAKESHARED_H
 #define SOPRAUTIL_POLYMORPHICRAWMAKESHARED_H
 
+#include <memory>
+
 namespace util {
+    /**
+     * Base for the recursion, throws an exception
+     * @throws std::runtime_error because no child was found
+     */
+    template<typename Base>
+    auto makeSharedFromRaw(const Base *) -> std::shared_ptr <Base> {
+        throw std::runtime_error{"Pointer cannot be converted to any of the child classes!"};
+    }
+
     /**
      * Tries to convert a raw pointer to a shared_ptr by copying its value. This requires us to know the
      * actual type if the class is polymorphic
@@ -22,21 +33,13 @@ namespace util {
     template<typename Base, typename FirstChild, typename ...Childs>
     auto makeSharedFromRaw(const Base *base) -> std::shared_ptr <Base> {
         const auto *firstChild = dynamic_cast<const FirstChild *>(base);
-        if (firstChild) {
+        if (firstChild != nullptr) {
             return std::make_shared<FirstChild>(*firstChild);
         } else {
-            makeSharedFromRaw<Base, Childs...>(base);
+            return makeSharedFromRaw<Base, Childs...>(base);
         }
     }
 
-    /**
-     * Base for the recursion, the pointer cannot be converted to any of the child classes.
-     * @throws std::runtime_error because this is the base case
-     */
-    template<typename Base>
-    auto makeSharedFromRaw(const Base*) -> std::shared_ptr <Base> {
-        throw std::runtime_error{"Pointer cannot be converted to any of the child classes!"};
-    }
 }
 
 #endif //SOPRAUTIL_POLYMORPHICRAWMAKESHARED_H
